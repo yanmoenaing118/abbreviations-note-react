@@ -4,6 +4,7 @@
   @media screen and (min-width: 750px) {
     width: 600px;
     margin: 0 auto;
+    padding-top: 3rem;
   }
 }
 
@@ -21,4 +22,11 @@
     text-align: center;
     padding-bottom: 2rem;
   }
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 }

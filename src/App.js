@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { App as AppStyle, App_Header } from "./App.module.scss";
+import { App as AppStyle, App_Header, fixed } from "./App.module.scss";
 import Navigation from "./Navigation/Navigation";
 import Home from "./Pages/Home/Home";
 import New from "./Pages/New/New";
@@ -80,6 +80,20 @@ import Favorites from "./Pages/Favorites/Favorites";
 
 function App() {
   let [abbreviations, setAbbreviations] = useState([]);
+  let observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      console.log(entry);
+      if (!entry.isIntersecting) {
+        document.querySelector("#navbar").classList.add(fixed);
+      } else {
+        document.querySelector("#navbar").classList.remove(fixed);
+      }
+    });
+  }, {});
+
+  useEffect(() => {
+    observer.observe(document.querySelector(".app_heading"));
+  }, [observer]);
 
   const searchHandler = (query) => {
     let results = abbreviations.filter((el) => {
@@ -93,7 +107,7 @@ function App() {
     <BrowserRouter>
       <div className={AppStyle}>
         <header className={App_Header}>
-          <h1>Abbreviation Dictionary</h1>
+          <h1 className="app_heading">Abbreviation Dictionary</h1>
           <Navigation
             abbreviations={abbreviations}
             searchHandler={searchHandler}

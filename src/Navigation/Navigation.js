@@ -7,7 +7,7 @@ import { Navigation as NavigationStyle } from "./Navigation.module.scss";
 
 const Navigation = () => {
   return (
-    <nav className={NavigationStyle}>
+    <nav className={NavigationStyle} id="navbar">
       <ul>
         <li>
           <Link to="/">

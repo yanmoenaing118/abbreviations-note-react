@@ -32,17 +32,19 @@ const AbbreviationDetails = ({
         <h1>{abbreviation}</h1>
         <h3>{stands_for}</h3>
         <p>{description}</p>
-        <div className={Action}>
-          <div>
-            <FontAwesomeIcon icon={faEdit} />
+        {showDetails && (
+          <div className={Action}>
+            <div>
+              <FontAwesomeIcon icon={faEdit} />
+            </div>
+            <div>
+              <FontAwesomeIcon icon={faHeart} />
+            </div>
+            <div>
+              <FontAwesomeIcon icon={faTrash} />
+            </div>
           </div>
-          <div>
-            <FontAwesomeIcon icon={faHeart} />
-          </div>
-          <div>
-            <FontAwesomeIcon icon={faTrash} />
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );

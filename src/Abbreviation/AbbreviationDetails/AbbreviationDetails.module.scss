@@ -26,7 +26,8 @@
     color: #777;
     font-size: 1.4rem;
     overflow-y: scroll;
-    height: 75%;
+    height: 78%;
+    padding-bottom: 5rem;
   }
 }
 
@@ -53,7 +54,7 @@
 
 .Action {
   display: flex;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -63,10 +64,14 @@
     flex: 1;
     padding: 1rem 0.5rem;
     text-align: center;
-    background-color: #4caf50;
-    color: #fff;
+    background-color: #fff;
+    color: #4caf50;
     &:not(:last-child) {
       border-right: 1px solid #fff;
     }
+  }
+
+  .fav {
+    color: #999;
   }
 }
