@@ -1,0 +1,37 @@
+.Navigation {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+
+    li {
+      flex: 1;
+      color: #333;
+      cursor: pointer;
+
+      &:not(:last-child) {
+        border-right: 1px solid #ddd;
+      }
+
+      a {
+        text-decoration: none;
+        color: #999;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+    }
+  }
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}

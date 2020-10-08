@@ -1,0 +1,11 @@
+.SearchForm {
+  display: flex;
+  align-items: center;
+
+  input[type="text"] {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    outline: none;
+    border: none;
+  }
+}
