@@ -1,0 +1,22 @@
+.Header {
+  background-color: #4caf50;
+  padding: 2rem 0rem 0 0rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2.5rem;
+  h1 {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.01rem;
+    font-weight: 900;
+    text-align: center;
+    padding-bottom: 2rem;
+  }
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}

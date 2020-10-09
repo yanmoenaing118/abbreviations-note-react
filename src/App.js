@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { App as AppStyle, App_Header, fixed } from "./App.module.scss";
-import Navigation from "./Navigation/Navigation";
+import { App as AppStyle } from "./App.module.scss";
 import Home from "./Pages/Home/Home";
 import New from "./Pages/New/New";
 import Favorites from "./Pages/Favorites/Favorites";
+import EditAbbreviation from "./Pages/EditAbbreviation/EditAbbreviation";
+import Header from "./Layout/Header";
 
 // const db = [
 //   {
@@ -79,44 +80,42 @@ import Favorites from "./Pages/Favorites/Favorites";
 // ];
 
 function App() {
-  let [abbreviations, setAbbreviations] = useState([]);
-  let observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      console.log(entry);
-      if (!entry.isIntersecting) {
-        document.querySelector("#navbar").classList.add(fixed);
-      } else {
-        document.querySelector("#navbar").classList.remove(fixed);
-      }
-    });
-  }, {});
-
-  useEffect(() => {
-    observer.observe(document.querySelector(".app_heading"));
-  }, [observer]);
-
-  const searchHandler = (query) => {
-    let results = abbreviations.filter((el) => {
-      return el.abbr.toLowerCase().startsWith(query);
-    });
-
-    setAbbreviations(results);
-  };
-
   return (
     <BrowserRouter>
       <div className={AppStyle}>
-        <header className={App_Header}>
-          <h1 className="app_heading">Abbreviation Dictionary</h1>
-          <Navigation
-            abbreviations={abbreviations}
-            searchHandler={searchHandler}
-          />
-        </header>
         <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/new" exact component={New} />
-          <Route path="/favorites" exact component={Favorites} />
+          <Route
+            path="/"
+            exact
+            render={() => (
+              <>
+                <Header />
+                <Home />
+              </>
+            )}
+          />
+          <Route
+            path="/new"
+            exact
+            render={() => (
+              <>
+                <Header />
+                <New />
+              </>
+            )}
+          />
+          <Route
+            path="/favorites"
+            exact
+            render={() => (
+              <>
+                <Header />
+                <Favorites />
+              </>
+            )}
+          />
+
+          <Route path="/edit-abbr/:id" exact component={EditAbbreviation} />
         </Switch>
         ;
       </div>
