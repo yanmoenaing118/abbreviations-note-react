@@ -11,6 +11,10 @@
   &:not(:last-child) {
     margin-bottom: 20px;
   }
+
+  a {
+    text-decoration: none;
+  }
   h1 {
     font-size: 1.6rem;
     color: #444;

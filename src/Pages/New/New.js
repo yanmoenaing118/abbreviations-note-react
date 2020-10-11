@@ -10,14 +10,33 @@ import {
   form_submit,
 } from "./New.module.scss";
 
-const New = () => {
+const New = ({ history }) => {
   const [abbreviation, setAbbreviation] = useState("");
   const [stands_for, setStands_for] = useState("");
   const [description, setDescription] = useState("");
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(abbreviation, stands_for, description);
+    const data = {
+      abbreviation,
+      stands_for,
+      description,
+    };
+    fetch("http://localhost:9000/api/v1/abbreviations", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json.data);
+        history.goBack();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <div className={NewStyle}>

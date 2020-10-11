@@ -1,0 +1,27 @@
+.Action {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid #ddd;
+
+  div {
+    flex: 1;
+    padding: 1rem 0.5rem;
+    text-align: center;
+    background-color: #fff;
+
+    a {
+      color: #999;
+    }
+
+    &:not(:last-child) {
+      border-right: 1px solid #fff;
+    }
+  }
+
+  .fav {
+    color: #4caf50;
+  }
+}

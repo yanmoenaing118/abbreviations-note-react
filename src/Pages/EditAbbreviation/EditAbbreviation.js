@@ -1,7 +1,4 @@
-import React from "react";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import React, { useState, useEffect } from "react";
 
 import {
   form,
@@ -11,28 +8,52 @@ import {
   form_textarea,
   form_submit,
 } from "./../New/New.module.scss";
-import {
-  EditAbbreviation as EditAbbreviationStyle,
-  back_to_bar,
-} from "./EditAbbreviation.module.scss";
+import { EditAbbreviation as EditAbbreviationStyle } from "./EditAbbreviation.module.scss";
+import BackToBar from "../../BackToBar/BackToBar";
 
-const EditAbbreviation = (props) => {
-  const goBackHandler = () => props.history.goBack();
+const EditAbbreviation = ({ history, match }) => {
+  let [abbreviation, setAbbreviation] = useState({
+    abbreviation: "",
+    stands_for: "",
+    description: "",
+  });
+
+  useEffect(() => {
+    fetch(`http://localhost:9000/api/v1/abbreviations/${match.params.id}`)
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json.data.result);
+        setAbbreviation(json.data.result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [match.params.id]);
+  const goBackHandler = () => history.goBack();
   return (
     <div className={EditAbbreviationStyle}>
-      <div className={back_to_bar}>
-        <FontAwesomeIcon icon={faArrowLeft} size="lg" onClick={goBackHandler} />
-        <h3>Edit the abbreviation</h3>
-      </div>
+      <BackToBar
+        goBackHandler={goBackHandler}
+        barTitle="Edit the abbreviation"
+      />
       <form className={form}>
         <div className={form_group}>
           <label className={form_label}>Abbreviation</label>
-          <input type="text" className={form_input} autoFocus></input>
+          <input
+            type="text"
+            className={form_input}
+            defaultValue={abbreviation.abbreviation}
+            autoFocus
+          ></input>
         </div>
 
         <div className={form_group}>
           <label className={form_label}>Stands for</label>
-          <input type="text" className={form_input}></input>
+          <input
+            type="text"
+            className={form_input}
+            defaultValue={abbreviation.description}
+          ></input>
         </div>
 
         <div className={form_group}>
@@ -40,7 +61,7 @@ const EditAbbreviation = (props) => {
           <textarea
             className={form_textarea}
             rows="10"
-            placeholder="Enter description"
+            defaultValue={abbreviation.description}
           ></textarea>
         </div>
 

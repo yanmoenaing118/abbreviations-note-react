@@ -6,6 +6,7 @@ import New from "./Pages/New/New";
 import Favorites from "./Pages/Favorites/Favorites";
 import EditAbbreviation from "./Pages/EditAbbreviation/EditAbbreviation";
 import Header from "./Layout/Header";
+import ShowAbbreviation from "./Pages/ShowAbbreviation/ShowAbbreviation";
 
 // const db = [
 //   {
@@ -97,10 +98,10 @@ function App() {
           <Route
             path="/new"
             exact
-            render={() => (
+            render={(props) => (
               <>
                 <Header />
-                <New />
+                <New {...props} />
               </>
             )}
           />
@@ -116,8 +117,8 @@ function App() {
           />
 
           <Route path="/edit-abbr/:id" exact component={EditAbbreviation} />
+          <Route path="/abbr/:id" exact component={ShowAbbreviation} />
         </Switch>
-        ;
       </div>
     </BrowserRouter>
   );

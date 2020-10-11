@@ -1,12 +1,5 @@
 .AbbreviationDetails {
-  position: absolute;
-  top: 20%;
-  width: 100%;
-  bottom: 0%;
   background-color: #fff;
-  border-top-left-radius: 2.5rem;
-  border-top-right-radius: 2.5rem;
-  box-shadow: 0 -0.1rem 1rem rgba(0, 0, 0, 0.1);
   padding: 3rem 3.5rem;
 
   h1 {
@@ -25,57 +18,6 @@
     line-height: 2;
     color: #777;
     font-size: 1.4rem;
-    overflow-y: scroll;
-    height: 78%;
     padding-bottom: 5rem;
-  }
-}
-
-.AbbreviationDetails_backdrop {
-  position: fixed;
-  height: 100vh;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  transition: all 0.3s;
-
-  @media screen and (min-width: 750px) {
-    width: 600px;
-    margin: 0 auto;
-  }
-}
-
-.Backdrop_In {
-  top: 0;
-}
-
-.Backdrop_Out {
-  top: 100vh;
-}
-
-.Action {
-  display: flex;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  border-top: 1px solid #ddd;
-
-  div {
-    flex: 1;
-    padding: 1rem 0.5rem;
-    text-align: center;
-    background-color: #fff;
-
-    a {
-      color: #999;
-    }
-
-    &:not(:last-child) {
-      border-right: 1px solid #fff;
-    }
-  }
-
-  .fav {
-    color: #4caf50;
   }
 }
