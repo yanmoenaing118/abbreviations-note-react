@@ -5,15 +5,16 @@
   left: 0;
   width: 100%;
   border-top: 1px solid #ddd;
+  background-color: var(--primary-color);
 
-  div {
+  > div {
     flex: 1;
     padding: 1rem 0.5rem;
     text-align: center;
-    background-color: #fff;
+    color: #fff;
 
     a {
-      color: #999;
+      color: #fff;
     }
 
     &:not(:last-child) {

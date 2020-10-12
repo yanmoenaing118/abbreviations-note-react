@@ -1,0 +1,39 @@
+import { faBars, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react";
+import Sidedrawer from "../../components/UI/Sidedrawer/Sidedrawer";
+import Navigation from "../Navigation/Navigation";
+import {
+  Header as HeaderStyle,
+  appbar,
+  menu,
+  search,
+  logo,
+} from "./Header.module.scss";
+
+const Header = () => {
+  let [showSidedrawer, setShowSidedrawer] = useState(false);
+  return (
+    <header className={HeaderStyle}>
+      <div className={appbar}>
+        <div className={menu} onClick={(e) => setShowSidedrawer(true)}>
+          <FontAwesomeIcon icon={faBars} size="lg" />
+          <div className={logo}>
+            <h1>ABBRS</h1>
+          </div>
+        </div>
+
+        <div className={search}>
+          <FontAwesomeIcon icon={faSearch} />
+        </div>
+      </div>
+      <Navigation />
+      <Sidedrawer
+        showSidedrawer={showSidedrawer}
+        setShowSidedrawer={setShowSidedrawer}
+      />
+    </header>
+  );
+};
+
+export default React.memo(Header);

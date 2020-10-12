@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import witHeader from "../../hoc/withHeader";
 
 import {
   New as NewStyle,
@@ -81,4 +82,4 @@ const New = ({ history }) => {
   );
 };
 
-export default New;
+export default witHeader(New);

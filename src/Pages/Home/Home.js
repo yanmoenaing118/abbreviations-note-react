@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import witHeader from "../../hoc/withHeader";
 
-import AbbreviationList from "./../../Abbreviation/AbbreviationList/AbbreviationList";
+import AbbreviationList from "./../../components/Abbreviation/AbbreviationList/AbbreviationList";
 
 // const db = [
 //   {
@@ -90,4 +91,4 @@ const Home = (props) => {
   );
 };
 
-export default Home;
+export default witHeader(Home);

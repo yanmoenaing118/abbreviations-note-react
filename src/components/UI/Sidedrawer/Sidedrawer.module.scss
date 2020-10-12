@@ -1,0 +1,70 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(#000, 0.5);
+
+  .sidedrawer {
+    position: absolute;
+    background-color: #fff;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(0);
+    transition: all 0.3s;
+    transition-delay: 1s;
+
+    .list {
+      display: flex;
+      flex-direction: column;
+
+      &_item {
+        padding: 0.7rem 1rem;
+        padding-left: 2rem;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #ddd;
+      }
+
+      &_text {
+        font-size: 1.3rem;
+        flex: 9;
+      }
+
+      &_icon {
+        flex: 1;
+      }
+    }
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.moved {
+  transform: translateX(-100%);
+}
+
+.logout_btn {
+  margin-top: auto;
+  margin-bottom: 3rem;
+  align-self: center;
+  padding: 1.5rem 3.5rem;
+  display: flex;
+  border: none;
+  border: 1px solid #ddd;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #999;
+  background-color: #fff;
+  div {
+    margin-right: 1rem;
+  }
+}

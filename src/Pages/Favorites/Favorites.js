@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import AbbreviationList from "../../Abbreviation/AbbreviationList/AbbreviationList";
+import AbbreviationList from "../../components/Abbreviation/AbbreviationList/AbbreviationList";
+import witHeader from "../../hoc/withHeader";
 
 // const db = [
 //   {
@@ -77,4 +78,4 @@ const Favorites = () => {
   );
 };
 
-export default Favorites;
+export default witHeader(Favorites);

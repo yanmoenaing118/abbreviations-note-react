@@ -1,0 +1,45 @@
+.AddedToFavorites {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 10%;
+  right: 5%;
+
+  background-color: #fff;
+  box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  padding-left: 0.5rem;
+
+  transition: all 1s;
+
+  &__success {
+    border: 1px solid var(--primary-color);
+  }
+
+  &__fail {
+    border: 1px solid red;
+  }
+  .check_icon {
+    padding: 0.5rem;
+
+    &__success {
+      color: var(--primary-color);
+    }
+
+    &__fail {
+      color: red;
+    }
+  }
+
+  .text {
+    color: #333;
+    font-size: 1.35rem;
+    padding: 0.5rem;
+    padding-right: 0.8rem;
+    font-weight: bold;
+  }
+}
+
+.moved {
+  transform: translateX(500px);
+}

@@ -53,7 +53,7 @@
   }
   &_submit {
     text-transform: uppercase;
-    background-color: #4caf50;
+    background-color: var(--primary-color);
     color: #fff;
     font-size: 2rem;
     padding: 1rem 0.5rem;

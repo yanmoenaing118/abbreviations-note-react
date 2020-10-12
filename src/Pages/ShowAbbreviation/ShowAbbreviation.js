@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import AbbreviationActions from "../../Abbreviation/AbbreviationActions/AbbreviationActions";
-import AbbreviationDetails from "../../Abbreviation/AbbreviationDetails/AbbreviationDetails";
-import BackToBar from "../../BackToBar/BackToBar";
+import AbbreviationActions from "../../components/Abbreviation/AbbreviationActions/AbbreviationActions";
+import AbbreviationDetails from "../../components/Abbreviation/AbbreviationDetails/AbbreviationDetails";
+// import AddedToFavorites from "../../components/UI/AddedToFavorites.js/AddedToFavorites";
+import BackToBar from "../../components/UI/BackToBar/BackToBar";
 
 const ShowAbbreviation = (props) => {
   let [abbreviation, setAbbreviation] = useState({
@@ -9,6 +10,8 @@ const ShowAbbreviation = (props) => {
     stands_for: "",
     description: "",
   });
+
+  // let [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
     const id = props.match.params.id;
@@ -22,11 +25,22 @@ const ShowAbbreviation = (props) => {
       });
   }, [props.match.params.id]);
   const goBackHandler = () => props.history.goBack();
+
+  // const addToFavoriteHandler = () => {
+  //   setShowAlert(true);
+  //   setTimeout(() => {
+  //     setShowAlert(false);
+  //   }, 2000);
+  // };
   return (
     <div>
       <BackToBar goBackHandler={goBackHandler} barTitle="Abbreviation" />
       <AbbreviationDetails {...abbreviation} />
-      <AbbreviationActions id={props.match.params.id} />
+      <AbbreviationActions
+        id={props.match.params.id}
+        // addToFavoriteHandler={addToFavoriteHandler}
+      />
+      {/* <AddedToFavorites showAlert={showAlert} success={false} /> */}
     </div>
   );
 };

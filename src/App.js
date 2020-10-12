@@ -5,7 +5,6 @@ import Home from "./Pages/Home/Home";
 import New from "./Pages/New/New";
 import Favorites from "./Pages/Favorites/Favorites";
 import EditAbbreviation from "./Pages/EditAbbreviation/EditAbbreviation";
-import Header from "./Layout/Header";
 import ShowAbbreviation from "./Pages/ShowAbbreviation/ShowAbbreviation";
 
 // const db = [
@@ -85,36 +84,9 @@ function App() {
     <BrowserRouter>
       <div className={AppStyle}>
         <Switch>
-          <Route
-            path="/"
-            exact
-            render={() => (
-              <>
-                <Header />
-                <Home />
-              </>
-            )}
-          />
-          <Route
-            path="/new"
-            exact
-            render={(props) => (
-              <>
-                <Header />
-                <New {...props} />
-              </>
-            )}
-          />
-          <Route
-            path="/favorites"
-            exact
-            render={() => (
-              <>
-                <Header />
-                <Favorites />
-              </>
-            )}
-          />
+          <Route path="/" exact component={Home} />
+          <Route path="/new" exact component={New} />
+          <Route path="/favorites" exact component={Favorites} />
 
           <Route path="/edit-abbr/:id" exact component={EditAbbreviation} />
           <Route path="/abbr/:id" exact component={ShowAbbreviation} />

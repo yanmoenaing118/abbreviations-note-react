@@ -9,7 +9,7 @@ import {
   form_submit,
 } from "./../New/New.module.scss";
 import { EditAbbreviation as EditAbbreviationStyle } from "./EditAbbreviation.module.scss";
-import BackToBar from "../../BackToBar/BackToBar";
+import BackToBar from "../../components/UI/BackToBar/BackToBar";
 
 const EditAbbreviation = ({ history, match }) => {
   let [abbreviation, setAbbreviation] = useState({

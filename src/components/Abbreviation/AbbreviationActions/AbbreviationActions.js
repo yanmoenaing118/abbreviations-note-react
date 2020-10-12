@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faTrashAlt, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTrash, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 import { Action } from "./AbbreviationActions.module.scss";
 
-const AbbreviationActions = ({ id }) => {
+const AbbreviationActions = ({ id, addToFavoriteHandler }) => {
   return (
     <div className={Action}>
       <div>
@@ -13,11 +13,11 @@ const AbbreviationActions = ({ id }) => {
           <FontAwesomeIcon icon={faEdit} />
         </Link>
       </div>
-      <div>
+      <div onClick={addToFavoriteHandler}>
         <FontAwesomeIcon icon={faHeart} />
       </div>
       <div>
-        <FontAwesomeIcon icon={faTrashAlt} />
+        <FontAwesomeIcon icon={faTrash} />
       </div>
     </div>
   );
