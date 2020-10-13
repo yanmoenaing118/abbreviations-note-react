@@ -22,7 +22,6 @@ const EditAbbreviation = ({ history, match }) => {
     fetch(`http://localhost:9000/api/v1/abbreviations/${match.params.id}`)
       .then((res) => res.json())
       .then((json) => {
-        console.log(json.data.result);
         setAbbreviation(json.data.result);
       })
       .catch((err) => {

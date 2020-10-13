@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AuthContext from "./../../../../context/authContext";
+
+import DefaultUserPic from "../../../../assets/default-user.png";
 
 import {
   sidedrawer_header,
@@ -12,14 +15,36 @@ import {
 } from "./SidedrawerHeader.module.scss";
 
 const SidedrawerHeader = () => {
+  const context = useContext(AuthContext);
+
+  const loginHandler = () => {
+    context.login();
+  };
+
   return (
     <div className={sidedrawer_header}>
       <div className={sidedrawer_header_picture}>
-        <FontAwesomeIcon icon={faUserCircle} size="4x" />
+        {context.auth ? (
+          <img src={DefaultUserPic} alt="User" />
+        ) : (
+          <FontAwesomeIcon icon={faUserCircle} size="4x" />
+        )}
       </div>
+
       <div className={sidedrawer_header_auth}>
-        <button className={btn + " " + login_btn}>Login</button>
-        <button className={btn + " " + sign_up_btn}>Sign up</button>
+        {context.auth ? (
+          <div>
+            <p>Yan Moe Naing</p>
+            <p>yanmoenaing@gmail.com</p>
+          </div>
+        ) : (
+          <>
+            <button onClick={loginHandler} className={btn + " " + login_btn}>
+              Log in
+            </button>
+            <button className={btn + " " + sign_up_btn}>Sign up</button>
+          </>
+        )}
       </div>
     </div>
   );

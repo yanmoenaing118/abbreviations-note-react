@@ -18,28 +18,7 @@
     transform: translateX(0);
     transition: all 0.3s;
     transition-delay: 1s;
-
-    .list {
-      display: flex;
-      flex-direction: column;
-
-      &_item {
-        padding: 0.7rem 1rem;
-        padding-left: 2rem;
-        display: flex;
-        align-items: center;
-        border-bottom: 1px solid #ddd;
-      }
-
-      &_text {
-        font-size: 1.3rem;
-        flex: 9;
-      }
-
-      &_icon {
-        flex: 1;
-      }
-    }
+    background-color: var(--primary-color);
   }
 }
 
@@ -62,7 +41,7 @@
   text-transform: uppercase;
   font-size: 1.6rem;
   font-weight: 900;
-  color: #999;
+  color: var(--primary-color);
   background-color: #fff;
   div {
     margin-right: 1rem;
