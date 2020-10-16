@@ -2,6 +2,7 @@ import { faBars, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import Sidedrawer from "../../components/UI/Sidedrawer/Sidedrawer";
+import history from "../../history";
 import Navigation from "../Navigation/Navigation";
 import {
   Header as HeaderStyle,
@@ -23,7 +24,7 @@ const Header = () => {
           </div>
         </div>
 
-        <div className={search}>
+        <div className={search} onClick={() => history.push("/search")}>
           <FontAwesomeIcon icon={faSearch} />
         </div>
       </div>

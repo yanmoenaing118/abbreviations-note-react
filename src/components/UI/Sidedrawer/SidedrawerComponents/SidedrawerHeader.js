@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AuthContext from "./../../../../context/authContext";
+import history from "./../../../../history";
 
 import DefaultUserPic from "../../../../assets/default-user.png";
 
@@ -16,10 +17,6 @@ import {
 
 const SidedrawerHeader = () => {
   const context = useContext(AuthContext);
-
-  const loginHandler = () => {
-    context.login();
-  };
 
   return (
     <div className={sidedrawer_header}>
@@ -39,10 +36,18 @@ const SidedrawerHeader = () => {
           </div>
         ) : (
           <>
-            <button onClick={loginHandler} className={btn + " " + login_btn}>
+            <button
+              onClick={() => history.push("/login")}
+              className={btn + " " + login_btn}
+            >
               Log in
             </button>
-            <button className={btn + " " + sign_up_btn}>Sign up</button>
+            <button
+              onClick={() => history.push("/signup")}
+              className={btn + " " + sign_up_btn}
+            >
+              Sign up
+            </button>
           </>
         )}
       </div>

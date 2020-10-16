@@ -1,0 +1,23 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  &_inputbox {
+    background-color: #fff;
+    padding: 0 2rem;
+    box-shadow: -1px 7px 8px 0px rgba(153, 153, 153, 0.5);
+    border-radius: 5px;
+  }
+
+  &_submit {
+    margin-top: 2.5rem;
+    background-color: var(--primary-color);
+    text-align: center;
+    padding: 1.2rem 3rem;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: normal;
+    border-radius: 5px;
+    box-shadow: -1px 7px 8px 0px rgba(153, 153, 153, 0.5);
+  }
+}

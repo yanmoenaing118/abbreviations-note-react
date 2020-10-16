@@ -1,0 +1,35 @@
+.Signup {
+  display: flex;
+  flex-direction: column;
+}
+
+.box {
+  width: 90%;
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-bottom: 5rem;
+  h1 {
+    background-color: var(--primary-color);
+    padding: 3rem 3rem;
+    text-align: center;
+    color: #ffffff;
+  }
+}
+
+.have_account {
+  padding-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.45rem;
+  color: #777;
+
+  a {
+    text-decoration: none;
+    font-weight: bolder;
+    color: var(--primary-color);
+  }
+}
