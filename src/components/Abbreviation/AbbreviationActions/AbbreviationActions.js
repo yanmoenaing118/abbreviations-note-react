@@ -5,7 +5,12 @@ import { faEdit, faTrash, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 import { Action } from "./AbbreviationActions.module.scss";
 
-const AbbreviationActions = ({ id, addToFavoriteHandler }) => {
+const AbbreviationActions = ({
+  id,
+  favorite,
+  addToFavoriteHandler,
+  showConfirmHandler,
+}) => {
   return (
     <div className={Action}>
       <div>
@@ -13,10 +18,13 @@ const AbbreviationActions = ({ id, addToFavoriteHandler }) => {
           <FontAwesomeIcon icon={faEdit} />
         </Link>
       </div>
-      <div onClick={addToFavoriteHandler}>
+      <div
+        onClick={addToFavoriteHandler}
+        style={{ color: favorite ? "#4caf50" : "#fff" }}
+      >
         <FontAwesomeIcon icon={faHeart} />
       </div>
-      <div>
+      <div onClick={showConfirmHandler}>
         <FontAwesomeIcon icon={faTrash} />
       </div>
     </div>
