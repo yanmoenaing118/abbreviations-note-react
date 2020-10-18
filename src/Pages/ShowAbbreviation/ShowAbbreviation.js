@@ -3,10 +3,11 @@ import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AbbreviationActions from "../../components/Abbreviation/AbbreviationActions/AbbreviationActions";
 import AbbreviationDetails from "../../components/Abbreviation/AbbreviationDetails/AbbreviationDetails";
-// import AddedToFavorites from "../../components/UI/AddedToFavorites.js/AddedToFavorites";
 import BackToBar from "../../components/UI/BackToBar/BackToBar";
 import axios from "./../../axios";
 import history from "./../../history";
+
+import { loading as loadingStyle } from "./ShowAbbreviation.module.scss";
 
 import {
   backdrop,
@@ -17,6 +18,7 @@ import {
   cancel_btn,
   delete_btn,
 } from "./ShowAbbreviation.module.scss";
+import Loading from "../../components/UI/Loading/Loading";
 
 const ShowAbbreviation = (props) => {
   let [abbreviation, setAbbreviation] = useState({
@@ -27,14 +29,14 @@ const ShowAbbreviation = (props) => {
   });
 
   let [showConfirm, setShowConfirm] = useState(false);
-
-  // let [showAlert, setShowAlert] = useState(false);
+  let [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       const id = props.match.params.id;
       const data = await axios.get(`/abbreviations/${id}.json`);
       setAbbreviation({ ...data.data });
+      setLoading(false);
     })();
   }, [props.match.params.id]);
   const goBackHandler = () => props.history.goBack();
@@ -44,7 +46,8 @@ const ShowAbbreviation = (props) => {
     const res = await axios.patch(`/abbreviations/${id}.json`, {
       favorite: !abbreviation.favorite,
     });
-    setAbbreviation({ ...abbreviation, favorite: true });
+    console.log(res);
+    setAbbreviation({ ...abbreviation, favorite: res.data.favorite });
   };
 
   const deleteAbbrHandler = async () => {
@@ -85,7 +88,13 @@ const ShowAbbreviation = (props) => {
         </div>
       ) : null}
       <BackToBar goBackHandler={goBackHandler} barTitle="Abbreviation" />
-      <AbbreviationDetails {...abbreviation} />
+      {loading ? (
+        <div className={loadingStyle}>
+          <Loading />
+        </div>
+      ) : (
+        <AbbreviationDetails {...abbreviation} />
+      )}
       <AbbreviationActions
         id={props.match.params.id}
         favorite={abbreviation.favorite}

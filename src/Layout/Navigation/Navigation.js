@@ -1,32 +1,35 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStream, faPlus, faHeart } from "@fortawesome/free-solid-svg-icons";
 
-import { Navigation as NavigationStyle } from "./Navigation.module.scss";
+import {
+  Navigation as NavigationStyle,
+  active,
+} from "./Navigation.module.scss";
 
 const Navigation = () => {
   return (
     <nav className={NavigationStyle} id="navbar">
       <ul>
         <li>
-          <Link to="/">
+          <NavLink to="/" exact activeClassName={active}>
             <FontAwesomeIcon icon={faStream} size="sm" />
             <span>Explore</span>
-          </Link>
+          </NavLink>
         </li>
 
         <li>
-          <Link to="/new">
+          <NavLink to="/new" activeClassName={active}>
             <FontAwesomeIcon icon={faPlus} size="sm" />
             <span>New</span>
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/favorites">
+          <NavLink to="/favorites" activeClassName={active}>
             <FontAwesomeIcon icon={faHeart} size="sm" />
             <span>Favorite</span>
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </nav>

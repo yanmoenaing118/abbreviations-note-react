@@ -8,9 +8,13 @@ import {
   form_textarea,
   form_submit,
 } from "./../New/New.module.scss";
-import { EditAbbreviation as EditAbbreviationStyle } from "./EditAbbreviation.module.scss";
+import {
+  EditAbbreviation as EditAbbreviationStyle,
+  loading as loadingStyle,
+} from "./EditAbbreviation.module.scss";
 import BackToBar from "../../components/UI/BackToBar/BackToBar";
 import axios from "../../axios";
+import Loading from "../../components/UI/Loading/Loading";
 
 const EditAbbreviation = ({ history, match }) => {
   let [abbreviation, setAbbreviation] = useState({
@@ -18,11 +22,15 @@ const EditAbbreviation = ({ history, match }) => {
     stands_for: "",
     description: "",
   });
+  let [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
       .get(`/abbreviations/${match.params.id}.json`)
-      .then((res) => setAbbreviation(res.data))
+      .then((res) => {
+        setAbbreviation(res.data);
+        setLoading(false);
+      })
       .catch((err) => console.log(err));
   }, [match.params.id]);
   const goBackHandler = () => history.goBack();
@@ -32,37 +40,43 @@ const EditAbbreviation = ({ history, match }) => {
         goBackHandler={goBackHandler}
         barTitle="Edit the abbreviation"
       />
-      <form className={form}>
-        <div className={form_group}>
-          <label className={form_label}>Abbreviation</label>
-          <input
-            type="text"
-            className={form_input}
-            defaultValue={abbreviation.abbreviation}
-            autoFocus
-          ></input>
+      {loading ? (
+        <div className={loadingStyle}>
+          <Loading />
         </div>
+      ) : (
+        <form className={form}>
+          <div className={form_group}>
+            <label className={form_label}>Abbreviation</label>
+            <input
+              type="text"
+              className={form_input}
+              defaultValue={abbreviation.abbreviation}
+              autoFocus
+            ></input>
+          </div>
 
-        <div className={form_group}>
-          <label className={form_label}>Stands for</label>
-          <input
-            type="text"
-            className={form_input}
-            defaultValue={abbreviation.description}
-          ></input>
-        </div>
+          <div className={form_group}>
+            <label className={form_label}>Stands for</label>
+            <input
+              type="text"
+              className={form_input}
+              defaultValue={abbreviation.description}
+            ></input>
+          </div>
 
-        <div className={form_group}>
-          <label className={form_label}>Brief description</label>
-          <textarea
-            className={form_textarea}
-            rows="10"
-            defaultValue={abbreviation.description}
-          ></textarea>
-        </div>
+          <div className={form_group}>
+            <label className={form_label}>Brief description</label>
+            <textarea
+              className={form_textarea}
+              rows="10"
+              defaultValue={abbreviation.description}
+            ></textarea>
+          </div>
 
-        <button className={form_submit}>Save</button>
-      </form>
+          <button className={form_submit}>Save</button>
+        </form>
+      )}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -8,10 +8,52 @@ import {
   search_results,
   result,
 } from "./Search.module.scss";
+import axios from "../../axios";
 
 const Search = ({ history }) => {
-  const showDetailsHandler = () => {
-    history.push("/abbr/5f7a957d9eac7f2cd460ada6");
+  let [query, setQuery] = useState("");
+  let [results, setResults] = useState([]);
+  const showDetailsHandler = (id) => {
+    history.push(`/abbr/${id}`);
+  };
+
+  const submitHanlder = async (e) => {
+    e.preventDefault();
+    const q = query.toUpperCase();
+    axios
+      .get(`/abbreviations.json?orderBy="abbreviation"&equalTo="${q}"`)
+      .then((res) => {
+        console.log(res);
+        const data = Object.keys(res.data).map((key) => {
+          return { ...res.data[key], id: key };
+        });
+        console.log(data);
+        setResults(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const renderResults = () => {
+    if (results.length > 0) {
+      return results.map((abbr, i) => {
+        return (
+          <div
+            key={abbr.id}
+            className={result}
+            onClick={() => showDetailsHandler(abbr.id)}
+          >
+            <p>{abbr.abbreviation}</p>
+            <div>
+              <FontAwesomeIcon icon={faArrowRight} />
+            </div>
+          </div>
+        );
+      });
+    }
+
+    return null;
   };
   return (
     <div className={search}>
@@ -19,22 +61,16 @@ const Search = ({ history }) => {
         <div onClick={(e) => history.goBack()}>
           <FontAwesomeIcon icon={faArrowLeft} />
         </div>
-        <form autoComplete="off">
-          <input type="text" name="search" />
+        <form autoComplete="off" onSubmit={submitHanlder}>
+          <input
+            type="text"
+            name="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
         </form>
       </div>
-      <div className={search_results}>
-        {["DOM", "TCP", "GDP", "ARP"].map((abbr) => {
-          return (
-            <div key={abbr} className={result} onClick={showDetailsHandler}>
-              <p>{abbr}</p>
-              <div>
-                <FontAwesomeIcon icon={faArrowRight} />
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      <div className={search_results}>{renderResults()}</div>
     </div>
   );
 };
