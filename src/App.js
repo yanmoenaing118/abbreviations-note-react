@@ -92,6 +92,7 @@ function App() {
   };
 
   const logoutHander = () => {
+    console.log("h");
     setAuth(false);
   };
 

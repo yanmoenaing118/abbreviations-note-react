@@ -8,7 +8,7 @@ import { back_to_bar } from "./BackToBar.module.scss";
 const BackToBar = ({ goBackHandler, barTitle }) => {
   return (
     <div className={back_to_bar}>
-      <FontAwesomeIcon icon={faArrowLeft} size="lg" onClick={goBackHandler} />
+      <FontAwesomeIcon icon={faArrowLeft} size="sm" onClick={goBackHandler} />
       <h3>{barTitle}</h3>
     </div>
   );

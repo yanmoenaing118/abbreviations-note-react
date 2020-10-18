@@ -44,7 +44,8 @@ const Search = ({ history }) => {
             className={result}
             onClick={() => showDetailsHandler(abbr.id)}
           >
-            <p>{abbr.abbreviation}</p>
+            <h3>{abbr.abbreviation}</h3>
+            <p>{abbr.stands_for}</p>
             <div>
               <FontAwesomeIcon icon={faArrowRight} />
             </div>
@@ -59,10 +60,11 @@ const Search = ({ history }) => {
     <div className={search}>
       <div className={search_form}>
         <div onClick={(e) => history.goBack()}>
-          <FontAwesomeIcon icon={faArrowLeft} />
+          <FontAwesomeIcon icon={faArrowLeft} size="sm" />
         </div>
         <form autoComplete="off" onSubmit={submitHanlder}>
           <input
+            autoFocus
             type="text"
             name="search"
             value={query}

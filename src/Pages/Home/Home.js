@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../axios";
 import Loading from "../../components/UI/Loading/Loading";
+import withError from "../../hoc/withError";
 import witHeader from "../../hoc/withHeader";
 
 import AbbreviationList from "./../../components/Abbreviation/AbbreviationList/AbbreviationList";
@@ -37,4 +38,4 @@ const Home = (props) => {
   );
 };
 
-export default witHeader(Home);
+export default witHeader(withError(Home, axios));
