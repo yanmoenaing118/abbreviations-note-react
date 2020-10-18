@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "../../axios";
 import witHeader from "../../hoc/withHeader";
 
 import AbbreviationList from "./../../components/Abbreviation/AbbreviationList/AbbreviationList";
@@ -78,10 +79,16 @@ import AbbreviationList from "./../../components/Abbreviation/AbbreviationList/A
 const Home = (props) => {
   let [abbreviations, setAbbreviations] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:9000/api/v1/abbreviations")
-      .then((res) => res.json())
-      .then((json) => {
-        setAbbreviations(json.data.results);
+    axios
+      .get("/abbreviations.json")
+      .then((res) => {
+        const data = Object.keys(res.data).map((key) => {
+          return { ...res.data[key], id: key };
+        });
+        setAbbreviations(data);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, []);
   return (

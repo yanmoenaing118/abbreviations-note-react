@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import witHeader from "../../hoc/withHeader";
+import axios from "./../../axios";
 
 import {
   New as NewStyle,
@@ -22,22 +23,15 @@ const New = ({ history }) => {
       abbreviation,
       stands_for,
       description,
+      favorite: false,
     };
-    fetch("http://localhost:9000/api/v1/abbreviations", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        console.log(json.data);
-        history.goBack();
+
+    axios
+      .post("/abbreviations.json", data)
+      .then((res) => {
+        history.push("/");
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => console.log(err));
   };
   return (
     <div className={NewStyle}>

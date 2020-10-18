@@ -10,6 +10,7 @@ import {
 } from "./../New/New.module.scss";
 import { EditAbbreviation as EditAbbreviationStyle } from "./EditAbbreviation.module.scss";
 import BackToBar from "../../components/UI/BackToBar/BackToBar";
+import axios from "../../axios";
 
 const EditAbbreviation = ({ history, match }) => {
   let [abbreviation, setAbbreviation] = useState({
@@ -19,14 +20,10 @@ const EditAbbreviation = ({ history, match }) => {
   });
 
   useEffect(() => {
-    fetch(`http://localhost:9000/api/v1/abbreviations/${match.params.id}`)
-      .then((res) => res.json())
-      .then((json) => {
-        setAbbreviation(json.data.result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    axios
+      .get(`/abbreviations/${match.params.id}.json`)
+      .then((res) => setAbbreviation(res.data))
+      .catch((err) => console.log(err));
   }, [match.params.id]);
   const goBackHandler = () => history.goBack();
   return (

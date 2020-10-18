@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "../../axios";
 import AbbreviationList from "../../components/Abbreviation/AbbreviationList/AbbreviationList";
 import witHeader from "../../hoc/withHeader";
 
@@ -61,15 +62,15 @@ import witHeader from "../../hoc/withHeader";
 const Favorites = () => {
   let [favorites, setFavorites] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:9000/api/v1/abbreviations/favorites")
-      .then((res) => res.json())
-      .then((json) => {
-        console.log(json);
-        setFavorites(json.data.results);
+    axios
+      .get('/abbreviations.json?orderBy="favorite"&equalTo=true')
+      .then((res) => {
+        const data = Object.keys(res.data).map((key) => {
+          return { ...res.data[key], id: key };
+        });
+        setFavorites(data);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => console.log(err));
   }, []);
   return (
     <div>

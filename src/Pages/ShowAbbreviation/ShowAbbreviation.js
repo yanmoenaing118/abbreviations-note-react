@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  faEraser,
-  faFire,
-  faTimesCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AbbreviationActions from "../../components/Abbreviation/AbbreviationActions/AbbreviationActions";
 import AbbreviationDetails from "../../components/Abbreviation/AbbreviationDetails/AbbreviationDetails";
@@ -37,22 +33,22 @@ const ShowAbbreviation = (props) => {
   useEffect(() => {
     (async () => {
       const id = props.match.params.id;
-      const data = await axios.get(`/abbreviations/${id}`);
-      setAbbreviation(data.data.data.result);
+      const data = await axios.get(`/abbreviations/${id}.json`);
+      setAbbreviation({ ...data.data });
     })();
   }, [props.match.params.id]);
   const goBackHandler = () => props.history.goBack();
 
   const addToFavoriteHandler = async () => {
     const id = props.match.params.id;
-    const res = await axios.patch(`/abbreviations/${id}`, {
+    const res = await axios.patch(`/abbreviations/${id}.json`, {
       favorite: !abbreviation.favorite,
     });
-    setAbbreviation(res.data.data.result);
+    setAbbreviation({ ...abbreviation, favorite: true });
   };
 
   const deleteAbbrHandler = async () => {
-    await axios.delete(`/abbreviations/${props.match.params.id}`);
+    await axios.delete(`/abbreviations/${props.match.params.id}.json`);
     history.push("/");
   };
 
