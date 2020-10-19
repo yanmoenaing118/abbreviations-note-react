@@ -1,34 +1,45 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const withError = (WrappedComponent, axios) => {
-  return class extends React.Component {
-    state = {
-      error: null,
-    };
+  return (props) => {
+    let [error, setError] = useState(null);
+    let mounted = useRef(false);
 
-    componentDidMount() {
-      this.reqInterceptor = axios.interceptors.request.use(
-        (req) => req,
+    useEffect(() => {
+      mounted.current = true;
+      axios.interceptors.request.use(
+        (req) => {
+          setError(null);
+          return req;
+        },
         (err) => {
-          this.setState({ error: err });
+          setError(err);
+          return Promise.reject(err);
         }
       );
-      this.resInterceptor = axios.interceptors.response.use(
-        (res) => res,
+      axios.interceptors.response.use(
+        (res) => {
+          if (mounted.current) {
+            setError(null);
+          }
+          return res;
+        },
         (err) => {
-          this.setState({ error: err });
+          if (mounted.current) {
+            setError(err);
+          }
+          return Promise.reject(err);
         }
       );
-    }
 
-    componentWillUnmount() {
-      axios.interceptors.request.eject(this.reqInterceptor);
-      axios.interceptors.response.eject(this.resInterceptor);
-    }
+      return () => {
+        mounted.current = false;
+      };
+    });
 
-    renderComponent() {
-      if (this.state.error) {
-        if (this.state.error.message === "Network Error") {
+    const renderComponent = () => {
+      if (error) {
+        if (error.message === "Network Error") {
           return (
             <div>
               <p>Couldn't load data</p>
@@ -38,11 +49,9 @@ const withError = (WrappedComponent, axios) => {
         }
       }
       return <WrappedComponent />;
-    }
+    };
 
-    render() {
-      return this.renderComponent();
-    }
+    return renderComponent();
   };
 };
 

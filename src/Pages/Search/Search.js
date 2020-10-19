@@ -17,11 +17,11 @@ const Search = ({ history }) => {
     history.push(`/abbr/${id}`);
   };
 
-  const submitHanlder = async (e) => {
-    e.preventDefault();
+  const submitHanlder = async (query) => {
+    setQuery(query);
     const q = query.toUpperCase();
     axios
-      .get(`/abbreviations.json?orderBy="abbreviation"&equalTo="${q}"`)
+      .get(`/abbreviations.json?orderBy="abbreviation"&startAt="${q}"`)
       .then((res) => {
         console.log(res);
         const data = Object.keys(res.data).map((key) => {
@@ -34,7 +34,9 @@ const Search = ({ history }) => {
         console.log(err);
       });
   };
-
+  const onChangeHandler = (q) => {
+    submitHanlder(q);
+  };
   const renderResults = () => {
     if (results.length > 0) {
       return results.map((abbr, i) => {
@@ -68,7 +70,7 @@ const Search = ({ history }) => {
             type="text"
             name="search"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => onChangeHandler(e.target.value)}
           />
         </form>
       </div>
