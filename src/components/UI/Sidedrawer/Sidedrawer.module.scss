@@ -1,33 +1,12 @@
-.backdrop {
-  position: fixed;
-  top: 0;
+.sidedrawer {
+  position: absolute;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(#000, 0.5);
-
-  .sidedrawer {
-    position: absolute;
-    background-color: #fff;
-    left: 0;
-    top: 0;
-    height: 100vh;
-    width: 85%;
-    display: flex;
-    flex-direction: column;
-    transform: translateX(0);
-    transition: all 0.3s;
-    transition-delay: 1s;
-    background-color: var(--primary-color);
-  }
-}
-
-.hide {
-  display: none;
-}
-
-.moved {
-  transform: translateX(-100%);
+  top: 0;
+  height: 100vh;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
 }
 
 .logout_btn {
@@ -41,8 +20,8 @@
   text-transform: uppercase;
   font-size: 1.6rem;
   font-weight: 900;
-  color: var(--primary-color);
-  background-color: #fff;
+  color: var(--white);
+  background-color: var(--primary-color);
   div {
     margin-right: 1rem;
   }

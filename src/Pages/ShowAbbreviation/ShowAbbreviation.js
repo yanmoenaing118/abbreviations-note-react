@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import { faAllergies, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AbbreviationActions from "../../components/Abbreviation/AbbreviationActions/AbbreviationActions";
 import AbbreviationDetails from "../../components/Abbreviation/AbbreviationDetails/AbbreviationDetails";
@@ -19,6 +19,7 @@ import {
   delete_btn,
 } from "./ShowAbbreviation.module.scss";
 import Loading from "../../components/UI/Loading/Loading";
+import Modal from "../../components/UI/Modal/Modal";
 
 const ShowAbbreviation = (props) => {
   let [abbreviation, setAbbreviation] = useState({
@@ -62,14 +63,13 @@ const ShowAbbreviation = (props) => {
   return (
     <div>
       {showConfirm ? (
-        <div className={modal}>
-          <div className={backdrop}></div>
-          <div className={modal_body}>
+        <Modal close={() => setShowConfirm(false)}>
+          <div onClick={(e) => e.stopPropagation()} className={modal_body}>
             <div className={modal_icon}>
               <FontAwesomeIcon icon={faTimesCircle} size="2x" />
             </div>
             <h1>Are you sure?</h1>
-            <p>You can't undone this action.</p>
+            <p>You can't undo this action.</p>
             <div className={modal_act}>
               <button
                 onClick={() => setShowConfirm(false)}
@@ -85,7 +85,7 @@ const ShowAbbreviation = (props) => {
               </button>
             </div>
           </div>
-        </div>
+        </Modal>
       ) : null}
       <BackToBar goBackHandler={goBackHandler} barTitle="Abbreviation" />
       {loading ? (

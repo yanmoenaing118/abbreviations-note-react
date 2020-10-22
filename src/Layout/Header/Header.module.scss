@@ -1,5 +1,5 @@
 .Header {
-  background-color: var(--primary-color);
+  background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 2.5rem;
 
@@ -10,7 +10,7 @@
     padding: 1rem 0;
 
     .menu {
-      color: #fff;
+      color: var(--primary-color);
       margin-left: 1.5rem;
       display: flex;
       align-items: center;
@@ -20,14 +20,14 @@
 
         h1 {
           font-size: 1.25rem;
-          color: #fff;
+          color: var(--primary-color);
           font-weight: bold;
         }
       }
     }
 
     .search {
-      color: #fff;
+      color: var(--primary-color);
       margin-right: 1.5rem;
     }
   }

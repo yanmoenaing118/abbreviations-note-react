@@ -4,10 +4,10 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid #ddd;
-  color: #fff;
+  color: var(--text-color-dark);
 
   &_text {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     margin-left: 2rem;
     flex: 9;
   }

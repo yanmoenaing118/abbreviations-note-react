@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash, faHeart } from "@fortawesome/free-solid-svg-icons";
 
-import { Action } from "./AbbreviationActions.module.scss";
+import { Action, fav } from "./AbbreviationActions.module.scss";
 
 const AbbreviationActions = ({
   id,
@@ -18,10 +18,7 @@ const AbbreviationActions = ({
           <FontAwesomeIcon icon={faEdit} />
         </Link>
       </div>
-      <div
-        onClick={addToFavoriteHandler}
-        style={{ color: favorite ? "#4caf50" : "#fff" }}
-      >
+      <div onClick={addToFavoriteHandler} className={favorite ? fav : ""}>
         <FontAwesomeIcon icon={faHeart} />
       </div>
       <div onClick={showConfirmHandler}>

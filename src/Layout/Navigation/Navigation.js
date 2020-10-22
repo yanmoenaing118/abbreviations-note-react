@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStream, faPlus, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faStream, faHeart, faUser } from "@fortawesome/free-solid-svg-icons";
 
 import {
   Navigation as NavigationStyle,
@@ -15,20 +15,21 @@ const Navigation = () => {
         <li>
           <NavLink to="/" exact activeClassName={active}>
             <FontAwesomeIcon icon={faStream} size="sm" />
-            <span>Explore</span>
+            {/* <span>Explore</span> */}
           </NavLink>
         </li>
 
         <li>
-          <NavLink to="/new" activeClassName={active}>
-            <FontAwesomeIcon icon={faPlus} size="sm" />
-            <span>New</span>
-          </NavLink>
-        </li>
-        <li>
           <NavLink to="/favorites" activeClassName={active}>
             <FontAwesomeIcon icon={faHeart} size="sm" />
-            <span>Favorite</span>
+            {/* <span>Favorite</span> */}
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink to="/me" activeClassName={active}>
+            <FontAwesomeIcon icon={faUser} size="sm" />
+            {/* <span>Me</span> */}
           </NavLink>
         </li>
       </ul>

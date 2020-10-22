@@ -7,6 +7,7 @@ import Loading from "../../components/UI/Loading/Loading";
 import { loading as loadingStyle } from "./Favorites.module.scss";
 import Axios from "axios";
 import withError from "../../hoc/withError";
+import NewButton from "./../../components/UI/Buttons/NewButtton/NewButton";
 
 const Favorites = () => {
   let [favorites, setFavorites] = useState([]);
@@ -53,6 +54,7 @@ const Favorites = () => {
         ) : (
           <AbbreviationList abbreviations={favorites} />
         )}
+        <NewButton />
       </div>
     </>
   );

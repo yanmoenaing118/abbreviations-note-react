@@ -29,10 +29,12 @@ const Header = () => {
         </div>
       </div>
       <Navigation />
-      <Sidedrawer
-        showSidedrawer={showSidedrawer}
-        setShowSidedrawer={setShowSidedrawer}
-      />
+      {showSidedrawer && (
+        <Sidedrawer
+          showSidedrawer={showSidedrawer}
+          setShowSidedrawer={setShowSidedrawer}
+        />
+      )}
     </header>
   );
 };

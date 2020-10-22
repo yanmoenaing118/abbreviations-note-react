@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AuthContext from "./../../../../context/authContext";
 import history from "./../../../../history";
 
-import DefaultUserPic from "../../../../assets/default-user.png";
+import DefaultUserPic from "../../../../assets/kyg.jpg";
 
 import {
   sidedrawer_header,
@@ -13,6 +13,7 @@ import {
   btn,
   login_btn,
   sign_up_btn,
+  avatar,
 } from "./SidedrawerHeader.module.scss";
 
 const SidedrawerHeader = () => {
@@ -21,8 +22,10 @@ const SidedrawerHeader = () => {
   return (
     <div className={sidedrawer_header}>
       <div className={sidedrawer_header_picture}>
-        {context.auth ? (
-          <img src={DefaultUserPic} alt="User" />
+        {true ? (
+          <div className={avatar}>
+            <img src={DefaultUserPic} alt="User" />
+          </div>
         ) : (
           <FontAwesomeIcon icon={faUserCircle} size="4x" />
         )}

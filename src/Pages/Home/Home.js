@@ -1,5 +1,5 @@
-import Axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
+import Axios from "axios";
 import axios from "../../axios";
 import Loading from "../../components/UI/Loading/Loading";
 import withError from "../../hoc/withError";
@@ -8,8 +8,10 @@ import withHeader from "../../hoc/withHeader";
 import AbbreviationList from "./../../components/Abbreviation/AbbreviationList/AbbreviationList";
 
 import { loading as loadingStyle } from "./Home.module.scss";
+import NewButton from "../../components/UI/Buttons/NewButtton/NewButton";
 
 const Home = (props) => {
+  console.log(props);
   let [abbreviations, setAbbreviations] = useState([]);
   let [loading, setLoading] = useState(true);
   let mounted = useRef(false);
@@ -29,6 +31,7 @@ const Home = (props) => {
         });
 
         if (mounted.current) {
+          console.table(data);
           setAbbreviations(data);
           setLoading(false);
         }
@@ -57,6 +60,7 @@ const Home = (props) => {
         ) : (
           <AbbreviationList abbreviations={abbreviations} />
         )}
+        <NewButton />
       </div>
     </>
   );

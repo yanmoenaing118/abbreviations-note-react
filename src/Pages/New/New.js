@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import witHeader from "../../hoc/withHeader";
+import BackToBar from "./../../components/UI/BackToBar/BackToBar";
 import axios from "./../../axios";
 
 import {
@@ -35,6 +35,10 @@ const New = ({ history }) => {
   };
   return (
     <div className={NewStyle}>
+      <BackToBar
+        barTitle="Add New Abbreviation"
+        goBackHandler={() => history.goBack()}
+      />
       <form className={form}>
         <div className={form_group}>
           <label className={form_label}>Abbreviation</label>
@@ -76,4 +80,4 @@ const New = ({ history }) => {
   );
 };
 
-export default witHeader(New);
+export default New;
