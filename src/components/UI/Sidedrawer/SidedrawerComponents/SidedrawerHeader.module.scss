@@ -4,6 +4,13 @@
   align-items: center;
   padding: 2.5rem 1.5rem;
   background-color: var(--white);
+  div {
+    color: var(--text-color-light);
+    p {
+      color: var(--text-color-dark);
+    }
+  }
+
   &_picture {
     color: var(--primary-color);
     margin-right: 1.5rem;
@@ -23,8 +30,8 @@
   }
 
   &_auth {
-    margin-top: 5rem;
-    margin-bottom: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
     display: flex;
     width: 100%;
     justify-content: center;

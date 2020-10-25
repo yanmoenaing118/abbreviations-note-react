@@ -22,7 +22,7 @@ const SidedrawerHeader = () => {
   return (
     <div className={sidedrawer_header}>
       <div className={sidedrawer_header_picture}>
-        {true ? (
+        {false ? (
           <div className={avatar}>
             <img src={DefaultUserPic} alt="User" />
           </div>
@@ -32,21 +32,25 @@ const SidedrawerHeader = () => {
       </div>
 
       <div className={sidedrawer_header_auth}>
-        {context.auth ? (
+        {false ? (
           <div>
             <p>Yan Moe Naing</p>
-            <p>yanmoenaing@gmail.com</p>
+            <div>yanmoenaing@gmail.com</div>
           </div>
         ) : (
           <>
             <button
-              onClick={() => history.push("/login")}
+              onClick={() =>
+                history.push("/auth/?isLogin=true", {
+                  params: "hel",
+                })
+              }
               className={btn + " " + login_btn}
             >
               Log in
             </button>
             <button
-              onClick={() => history.push("/signup")}
+              onClick={() => history.push("/auth/?isSignup=true")}
               className={btn + " " + sign_up_btn}
             >
               Sign up

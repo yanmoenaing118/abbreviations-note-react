@@ -3,13 +3,14 @@
   padding-left: 2rem;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #ddd;
+  // border-bottom: 1px solid #ddd;
   color: var(--text-color-dark);
 
   &_text {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     margin-left: 2rem;
     flex: 9;
+    font-weight: 100;
   }
 
   &_icon {

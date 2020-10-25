@@ -2,13 +2,13 @@
   &_group {
     display: flex;
     flex-direction: column;
-    padding: 1.2rem 0;
+    padding: 0;
 
     label {
       text-transform: uppercase;
       font-size: 1.1rem;
       font-weight: 900;
-      color: var(--primary-color);
+      color: var(--text-color-dark);
     }
 
     input {
@@ -16,11 +16,26 @@
       border: none;
       color: #333;
       font-size: 1.6rem;
-      padding: 0.2rem 0;
+      padding: 0.8rem 0;
+      flex: 1;
+      background-color: lighten(#000, 80%);
     }
 
     &:not(:last-child) {
+      margin-bottom: 1rem;
       border-bottom: 1px solid #ddd;
     }
+  }
+
+  &_icon {
+    color: var(--text-color-light);
+    padding-left: 1rem;
+  }
+
+  &_input {
+    display: flex;
+    align-items: center;
+    background-color: lighten(#000, 90%);
+    padding: 0.5rem 1rem;
   }
 }

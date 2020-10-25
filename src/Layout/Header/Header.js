@@ -25,7 +25,7 @@ const Header = () => {
         </div>
 
         <div className={search} onClick={() => history.push("/search")}>
-          <FontAwesomeIcon icon={faSearch} />
+          <FontAwesomeIcon icon={faSearch} size="lg" />
         </div>
       </div>
       <Navigation />

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { faAllergies, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AbbreviationActions from "../../components/Abbreviation/AbbreviationActions/AbbreviationActions";
 import AbbreviationDetails from "../../components/Abbreviation/AbbreviationDetails/AbbreviationDetails";
@@ -10,8 +10,6 @@ import history from "./../../history";
 import { loading as loadingStyle } from "./ShowAbbreviation.module.scss";
 
 import {
-  backdrop,
-  modal,
   modal_body,
   modal_act,
   modal_icon,
