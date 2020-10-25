@@ -1,0 +1,76 @@
+.UserProfile {
+}
+
+.Banner {
+  position: relative;
+  background-color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  padding: 5rem 1.5rem;
+
+  div {
+    color: var(--white);
+  }
+
+  .UserName {
+    font-weight: 900;
+    font-size: 1.6rem;
+  }
+
+  .UserEmail {
+    font-weight: 300;
+    font-size: 1.2rem;
+  }
+
+  .Picture {
+    margin-right: 2rem;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .Setting {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.Nav {
+  ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(#000, 0.3);
+    li {
+      padding: 1rem 1.5rem;
+      flex: 1;
+      color: var(--primary-color);
+      display: flex;
+      font-size: 1.3rem;
+
+      div {
+        width: 3rem;
+      }
+
+      &:not(:last-child) {
+        border-right: 1px solid rgba(#000, 0.1);
+      }
+    }
+  }
+}
+
+.Content {
+  margin: 3rem 1.5rem;
+}

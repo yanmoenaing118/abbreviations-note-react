@@ -10,6 +10,7 @@ import AuthContext from "./context/authContext";
 import Search from "./Pages/Search/Search";
 import Auth from "./Pages/Auth/Auth";
 import { AnimatePresence } from "framer-motion";
+import UserProfile from "./Pages/UserProfile/UserProfile";
 
 function App() {
   let [auth, setAuth] = useState(false);
@@ -41,6 +42,7 @@ function App() {
           <Route path="/edit-abbr/:id" exact component={EditAbbreviation} />
           <Route path="/abbr/:id" exact component={ShowAbbreviation} />
           <Route path="/auth" exact component={Auth} />
+          <Route path="/profile/:slug" exact component={UserProfile} />
         </Switch>
       </div>
     </AuthContext.Provider>
