@@ -1,9 +1,9 @@
 .list_item {
-  padding: 0.7rem 1rem;
+  padding: 0.5rem 1rem;
   padding-left: 2rem;
   display: flex;
   align-items: center;
-  // border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   color: var(--text-color-dark);
 
   &_text {

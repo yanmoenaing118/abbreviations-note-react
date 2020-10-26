@@ -52,16 +52,21 @@
     list-style: none;
     display: flex;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(#000, 0.3);
+    box-shadow: 0 2px 5px rgba(#111, 0.1);
     li {
       padding: 1rem 1.5rem;
       flex: 1;
       color: var(--primary-color);
       display: flex;
       font-size: 1.3rem;
+      border-bottom: 2px solid transparent;
 
       div {
         width: 3rem;
+      }
+
+      &:first-child {
+        border-bottom: 3px solid var(--primary-color);
       }
 
       &:not(:last-child) {

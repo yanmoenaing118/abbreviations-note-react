@@ -1,6 +1,4 @@
 import React, { useContext } from "react";
-import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AuthContext from "./../../../../context/authContext";
 import history from "./../../../../history";
 
@@ -14,6 +12,7 @@ import {
   login_btn,
   sign_up_btn,
   avatar,
+  auth_btns,
 } from "./SidedrawerHeader.module.scss";
 
 const SidedrawerHeader = () => {
@@ -27,18 +26,19 @@ const SidedrawerHeader = () => {
             <img src={DefaultUserPic} alt="User" />
           </div>
         ) : (
-          <FontAwesomeIcon icon={faUserCircle} size="4x" />
+          <div className={avatar}>
+            <img src={DefaultUserPic} alt="User" />
+          </div>
         )}
       </div>
 
       <div className={sidedrawer_header_auth}>
         {false ? (
           <div>
-            <p>Yan Moe Naing</p>
-            <div>yanmoenaing@gmail.com</div>
+            <div>Yan Moe Naing</div>
           </div>
         ) : (
-          <>
+          <div className={auth_btns}>
             <button
               onClick={() =>
                 history.push("/auth/?isLogin=true", {
@@ -55,7 +55,7 @@ const SidedrawerHeader = () => {
             >
               Sign up
             </button>
-          </>
+          </div>
         )}
       </div>
     </div>

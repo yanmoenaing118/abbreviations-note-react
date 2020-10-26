@@ -29,7 +29,7 @@ const Header = () => {
         </div>
       </div>
       <Navigation />
-      {showSidedrawer && (
+      {true && (
         <Sidedrawer
           showSidedrawer={showSidedrawer}
           setShowSidedrawer={setShowSidedrawer}

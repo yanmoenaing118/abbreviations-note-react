@@ -2,13 +2,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2.5rem 1.5rem;
+  padding: 2.5rem 0 0 0;
+
   background-color: var(--white);
   div {
-    color: var(--text-color-light);
-    p {
-      color: var(--text-color-dark);
-    }
+    text-align: center;
+    color: var(--text-color-dark);
   }
 
   &_picture {
@@ -30,34 +29,38 @@
   }
 
   &_auth {
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
     display: flex;
     width: 100%;
     justify-content: center;
 
-    > div {
-      text-align: center;
-
-      font-weight: 900;
+    .auth_btns {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      box-shadow: 0 3px 5px rgba(#555, 0.1);
+      background-image: linear-gradient(-45deg, #71b637 50%, #fff 50%);
     }
+
     .btn {
-      width: 11rem;
+      flex: 1;
+      align-items: center;
       border: none;
-      border-radius: 3px;
       padding: 0.8rem 1rem;
       text-transform: uppercase;
       font-size: 1.2rem;
       font-weight: 900;
-      color: var(--white);
-      background-color: var(--primary-color);
+      color: var(--primary-color);
+      background-color: transparent;
     }
 
     .login_btn {
-      margin-right: 0.5rem;
+      color: var(--primary-color);
     }
 
     .sign_up_btn {
+      color: var(--white);
     }
   }
 }

@@ -53,7 +53,7 @@ const Sidedrawer = ({ setShowSidedrawer }) => {
           <ListItem icon={faAddressCard} text="Contact us" />
           <ListItem icon={faComment} text="Write us a feedback" />
         </Lists>
-        {true ? (
+        {false ? (
           <button className={logout_btn} onClick={context.logout}>
             <div>
               <FontAwesomeIcon icon={faArrowLeft} />
