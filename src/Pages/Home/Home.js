@@ -12,7 +12,6 @@ import { loading as loadingStyle } from "./Home.module.scss";
 import NewButton from "../../components/UI/Buttons/NewButtton/NewButton";
 
 const Home = (props) => {
-  console.log(props);
   let [abbreviations, setAbbreviations] = useState([]);
   let [loading, setLoading] = useState(true);
   let mounted = useRef(false);
@@ -32,13 +31,11 @@ const Home = (props) => {
         });
 
         if (mounted.current) {
-          console.table(data);
           setAbbreviations(data);
           setLoading(false);
         }
       } catch (error) {
         if (Axios.isCancel(error)) {
-          console.log("Cancel request", error.message);
         } else {
           console.log(error.message);
         }

@@ -12,7 +12,7 @@ import {
   logo,
 } from "./Header.module.scss";
 
-const Header = () => {
+const Header = (props) => {
   let [showSidedrawer, setShowSidedrawer] = useState(false);
   return (
     <header className={HeaderStyle}>
@@ -29,7 +29,7 @@ const Header = () => {
         </div>
       </div>
       <Navigation />
-      {true && (
+      {showSidedrawer && (
         <Sidedrawer
           showSidedrawer={showSidedrawer}
           setShowSidedrawer={setShowSidedrawer}

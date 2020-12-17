@@ -9,7 +9,7 @@ import ShowAbbreviation from "./Pages/ShowAbbreviation/ShowAbbreviation";
 import AuthContext from "./context/authContext";
 import Search from "./Pages/Search/Search";
 import Auth from "./Pages/Auth/Auth";
-import { AnimatePresence } from "framer-motion";
+
 import UserProfile from "./Pages/UserProfile/UserProfile";
 
 function App() {
